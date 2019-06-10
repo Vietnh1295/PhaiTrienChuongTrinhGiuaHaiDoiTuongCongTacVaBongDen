@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="ConnectLamp1" onclick="ConnectLamp1()">
+<input type="button" value="Bật/Tắt" onclick="Switch()">
+<script>
+    var SwitchButton = function () {
+        this.status = false;
+        this.connectToLamp = function (ElectricLamp) {
+            this.connectToLamp = ElectricLamp;
+        }
+        this.swichOff = function () {
+            this.status = false;
+        }
+        this.swichOn = function () {
+            this.status = true;
+        }
+    }
+    var ElectricLamp = function (name) {
+        this.name = name;
+        this.status = false;
+        this.turnOff = function () {
+            this.status = false;
+        }
+        this.turnOn = function () {
+            this.status = true;
+        }
+    }
+    var electricLamp1 = new ElectricLamp('Đèn 1');
+    var switchButton = new SwitchButton();
+
+    function Switch() {
+        var regExp = /[A-Za-z0-9]+/;
+        if (regExp.test(switchButton.connectToLamp.name))
+        {
+            if (switchButton.connectToLamp.status) {
+                alert(switchButton.connectToLamp.name + ' Lighting');
+                switchButton.connectToLamp.turnOff();
+            } else {
+
+                alert(switchButton.connectToLamp.name + ' Not Light');
+                switchButton.connectToLamp.turnOn();
+            }
+
+        }
+
+        else
+            {
+                alert('Hãy kết nối với đèn');
+            }
+    }
+
+    function ConnectLamp1() {
+        switchButton.connectToLamp(electricLamp1);
+    }
+
+
+
+</script>
+</body>
+</html>
